@@ -1,18 +1,25 @@
-Feature: Registration functionality on E-commerece online shopping website
+Feature: Registration functionality on E-commerce online shopping website
 
-  Scenario: As a user I want to register or sign in
-    Given browser is open
-    When user navigates to url {string}
-    Then verifying that the home page is visible successfully
-    And user clicks on Sign-in link
-    And user enters email id in create an account section
-    And clicks create an account button
-    When user enters his personal information
-    And  clicks on Registration button
-    Then user created successfully
+  Background:
+    Given initialize the browser with chrome
+    And    navigates to "url" site
+    And   verify the title of the homepage
 
-
-
+  Scenario: As a user I want to register or sign in on website
+    When  user clicks on Sign-in link
+    And   enters email_id in create an account section and clicks the button
+    And   user enters his personal information
+    Then  clicks on Registration button
+    And   verify that the user is registered successfully
 
 
+  Scenario Outline: As a registered user I want to log in into my account
+    When  I clicks on Sign-in link
+    And   enters <email_id> and <password>
+    Then  clicks on sign in button
+    And   user should be logged in successfully
+
+    Examples:
+      | email_id          | password |
+      | abcd123@gmail.com | abcd1234 |
 
