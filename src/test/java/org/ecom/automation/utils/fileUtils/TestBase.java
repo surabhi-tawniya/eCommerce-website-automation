@@ -1,4 +1,4 @@
-package org.ecom.automation.Utils.FileUtils;
+package org.ecom.automation.utils.fileUtils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

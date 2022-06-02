@@ -1,4 +1,4 @@
-package org.ecom.automation.Utils.PageObjects;
+package org.ecom.automation.utils.pageObjects;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
@@ -7,27 +7,27 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class AuthenticationPage {
-    public WebDriver driver;
+    public final WebDriver driver;
 
     public AuthenticationPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    By gender = By.xpath("//input[@id='id_gender1']");
-    By firstName = By.id("customer_firstname");
-    By lastName = By.id("customer_lastname");
-    By email = By.id("email");
-    By passwd = By.id("passwd");
-    By getFirstName = By.id("firstname");
-    By getLastName = By.id("lastname");
-    By address = By.id("address1");
-    By city = By.id("city");
-    By statedropdown = By.name("id_state");
-    By postcode = By.name("postcode");
-    By countrydropDown = By.name("id_country");
-    By phone_no = By.id("phone_mobile");
-    By referenceadd = By.xpath("//input[@name=\"alias\"]");
-    By submitBtn = By.id("submitAccount");
+    final By gender = By.xpath("//input[@id='id_gender1']");
+    final By firstName = By.id("customer_firstname");
+    final By lastName = By.id("customer_lastname");
+    final By email = By.id("email");
+    final By passwd = By.id("passwd");
+    final By getFirstName = By.id("firstname");
+    final By getLastName = By.id("lastname");
+    final By address = By.id("address1");
+    final By city = By.id("city");
+    final By statedropdown = By.name("id_state");
+    final By postcode = By.name("postcode");
+    final By countrydropDown = By.name("id_country");
+    final By phone_no = By.id("phone_mobile");
+    final By reference = By.xpath("//input[@name=\"alias\"]");
+    final By submitBtn = By.id("submitAccount");
 
     public void enterPersonalInformation() {
         driver.findElement(gender).click();
@@ -70,7 +70,7 @@ public class AuthenticationPage {
         driver.findElement(phone_no).sendKeys(phnno);
 
         String ref_address = RandomStringUtils.random(10, true, true);
-        driver.findElement(referenceadd).sendKeys(ref_address);
+        driver.findElement(reference).sendKeys(ref_address);
     }
 
     public void clickOnSubmitButton() {

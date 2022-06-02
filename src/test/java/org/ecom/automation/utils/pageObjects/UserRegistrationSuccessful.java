@@ -1,4 +1,4 @@
-package org.ecom.automation.Utils.PageObjects;
+package org.ecom.automation.utils.pageObjects;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
@@ -11,13 +11,13 @@ import org.testng.Assert;
 
 public class UserRegistrationSuccessful {
     private final static Logger LOGGER = LoggerFactory.getLogger(UserRegistrationSuccessful.class);
-    public WebDriver driver;
+    public final WebDriver driver;
 
     public UserRegistrationSuccessful(WebDriver driver) {
         this.driver = driver;
     }
 
-    By verifyMyAccount = By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a");
+    final By verifyMyAccount = By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a");
 
     public void verifyMyAccountPageTitle() {
         String actualTitle = driver.getTitle();

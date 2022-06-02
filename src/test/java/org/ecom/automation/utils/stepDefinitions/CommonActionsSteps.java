@@ -1,7 +1,7 @@
-package org.ecom.automation.Utils.StepDefinations;
+package org.ecom.automation.utils.stepDefinitions;
 
-import org.ecom.automation.Utils.FileUtils.TestBase;
-import org.ecom.automation.Utils.PageObjects.HomePage;
+import org.ecom.automation.utils.fileUtils.TestBase;
+import org.ecom.automation.utils.pageObjects.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +13,7 @@ public class CommonActionsSteps extends TestBase {
     private static String url;
     private WebDriver driver;
 
-
-    public CommonActionsSteps(WebDriver driver){
+    public CommonActionsSteps(WebDriver driver) {
         this.driver = driver;
     }
 

@@ -1,6 +1,6 @@
-package org.ecom.automation.Utils.PageObjects;
+package org.ecom.automation.utils.pageObjects;
 
-import org.ecom.automation.Utils.FileUtils.TestBase;
+import org.ecom.automation.utils.fileUtils.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,7 +18,7 @@ public class HomePage extends TestBase {
         this.driver = driver;
     }
 
-    By signInLink = By.xpath("sign In");
+    final By signInLink = By.xpath("sign In");
 
     public void clickOnSigninLink() {
         driver = new ChromeDriver();
@@ -30,7 +30,6 @@ public class HomePage extends TestBase {
         String actualTitle = driver.getTitle();
         String expectedTitle = "My Store";
         WebDriverWait wait = new WebDriverWait(driver, 20);
-        ;
         wait.until(ExpectedConditions.titleIs("My Store"));
         Assert.assertEquals(actualTitle, expectedTitle, "Title verified");
 

@@ -1,13 +1,13 @@
-package org.ecom.automation.Utils.StepDefinations;
+package org.ecom.automation.utils.stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.ecom.automation.Utils.PageObjects.AuthenticationPage;
-import org.ecom.automation.Utils.PageObjects.HomePage;
-import org.ecom.automation.Utils.PageObjects.Sign_inPage;
-import org.ecom.automation.Utils.PageObjects.UserRegistrationSuccessful;
+import org.ecom.automation.utils.pageObjects.AuthenticationPage;
+import org.ecom.automation.utils.pageObjects.HomePage;
+import org.ecom.automation.utils.pageObjects.Sign_inPage;
+import org.ecom.automation.utils.pageObjects.UserRegistrationSuccessful;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class UserRegistrationStepDef {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserRegistrationStepDef.class);
     public WebDriver driver;
-    private CommonActionsSteps commonSteps = new CommonActionsSteps(driver);
+    private final CommonActionsSteps commonSteps = new CommonActionsSteps(driver);
 
     public UserRegistrationStepDef() {
     }

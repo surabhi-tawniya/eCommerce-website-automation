@@ -1,4 +1,4 @@
-package org.ecom.automation.Utils.TestRunner;
+package org.ecom.automation.utils.testRunner;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -9,7 +9,7 @@ public class OnlineShoppingRunnerClass {
     @CucumberOptions(
             monochrome = true,
             features = {"src/test/resources/features/"},
-            glue = {"StepDefinations"},
+            glue = {"StepDefinitions"},
             plugin = {"pretty","html:target/cucumber-html-report", "json:target/cucumber.json"})
 
     public static class CucumberRunnerTest {

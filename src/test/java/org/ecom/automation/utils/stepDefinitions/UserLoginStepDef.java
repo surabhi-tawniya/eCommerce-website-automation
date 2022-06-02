@@ -1,10 +1,10 @@
-package org.ecom.automation.Utils.StepDefinations;
+package org.ecom.automation.utils.stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.ecom.automation.Utils.PageObjects.HomePage;
-import org.ecom.automation.Utils.PageObjects.LoginPage;
+import org.ecom.automation.utils.pageObjects.HomePage;
+import org.ecom.automation.utils.pageObjects.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,30 +1,27 @@
-package org.ecom.automation.Utils.PageObjects;
+package org.ecom.automation.utils.pageObjects;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class LoginPage {
-    private final static Logger LOGGER = LoggerFactory.getLogger(LoginPage.class);
-    public WebDriver driver;
+    public final WebDriver driver;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    By enterEmail = By.id("email");
-    By password = By.id("passwd");
-    By signInButton = By.xpath("//*[@id=\"SubmitLogin\"]/span");
+    final By enterEmail = By.id("email");
+    final By password = By.id("passwd");
+    final By signInButton = By.xpath("//*[@id=\"SubmitLogin\"]/span");
 
     public void userEnterValidCredentials() {
         String randomEmail = RandomStringUtils.random(20, true, true);
         String email_id = randomEmail + "@gmail.com";
         driver.findElement(enterEmail).sendKeys(email_id);
 
-        String randompass = RandomStringUtils.random(10, true, true);
-        driver.findElement(password).sendKeys(randompass);
+        String randoms = RandomStringUtils.random(10, true, true);
+        driver.findElement(password).sendKeys(randoms);
     }
 
     public void userClicksSignInButton() {
