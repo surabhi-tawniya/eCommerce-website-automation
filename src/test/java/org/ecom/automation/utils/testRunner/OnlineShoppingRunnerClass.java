@@ -9,7 +9,7 @@ public class OnlineShoppingRunnerClass {
     @CucumberOptions(
             monochrome = true,
             features = {"src/test/resources/features/"},
-            glue = {"StepDefinitions"},
+            glue = {"stepDefinitions"},
             plugin = {"pretty","html:target/cucumber-html-report", "json:target/cucumber.json"})
 
     public static class CucumberRunnerTest {

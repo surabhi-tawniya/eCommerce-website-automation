@@ -13,7 +13,7 @@ import java.io.FileReader;
 
 public class TestBase {
     private final static Logger LOGGER = LoggerFactory.getLogger(TestBase.class);
-    private static WebDriver driver;
+    public static WebDriver driver;
     private static Properties properties;
 
     public TestBase() {

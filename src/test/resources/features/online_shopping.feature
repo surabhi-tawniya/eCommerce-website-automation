@@ -1,9 +1,9 @@
 Feature: Registration functionality on E-commerce online shopping website
 
-  Background:
+  Background:`
     Given initialize the browser with chrome
     And    navigates to "url" site
-    And   verify the title of the homepage
+ #   And   verify the title of the homepage
 
   Scenario: As a user I want to register or sign in on website
     When  user clicks on Sign-in link

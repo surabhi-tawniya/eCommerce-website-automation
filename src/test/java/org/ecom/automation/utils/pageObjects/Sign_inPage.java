@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Sign_inPage extends TestBase {
-    public final WebDriver driver;
+    public WebDriver driver;
 
     public Sign_inPage(WebDriver driver) {
         this.driver = driver;
@@ -18,7 +18,7 @@ public class Sign_inPage extends TestBase {
     public void clickOnCreateAccountButton() {
         String randomEmail = RandomStringUtils.random(20, true, true);
         String email = randomEmail + "@gmail.com";
-        driver.findElement(email_id).sendKeys(email);
-        driver.findElement(create_an_account_button).click();
+        TestBase.driver.findElement(email_id).sendKeys(email);
+        TestBase.driver.findElement(create_an_account_button).click();
     }
 }

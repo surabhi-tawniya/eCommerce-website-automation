@@ -1,6 +1,7 @@
 package org.ecom.automation.utils.stepDefinitions;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.ecom.automation.utils.pageObjects.HomePage;
@@ -9,11 +10,25 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UserLoginStepDef {
+import java.io.IOException;
+
+public class UserLoginStepDef extends CommonActionsSteps {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserLoginStepDef.class);
+    private final CommonActionsSteps commonSteps = new CommonActionsSteps(null);
     public WebDriver driver;
 
     public UserLoginStepDef() {
+        super();
+    }
+
+    @Given("initialize the browser with chrome")
+    public void initializingDriver() throws IOException {
+        commonSteps.initializeTheBrowserWithChrome();
+    }
+
+    @When("navigates to {string} site")
+    public void navigatingToUrl(String url) throws IOException {
+        commonSteps.navigatesToSite(url);
     }
 
     @When("I clicks on Sign-in link")

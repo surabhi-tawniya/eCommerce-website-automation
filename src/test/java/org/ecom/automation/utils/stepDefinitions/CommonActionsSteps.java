@@ -11,27 +11,30 @@ import java.io.IOException;
 public class CommonActionsSteps extends TestBase {
     private static final Logger LOGGER = LoggerFactory.getLogger(CommonActionsSteps.class);
     private static String url;
-    private WebDriver driver;
+    public WebDriver driver;
 
     public CommonActionsSteps(WebDriver driver) {
         this.driver = driver;
     }
 
+    public CommonActionsSteps() {
+
+    }
     public void initializeTheBrowserWithChrome() throws IOException {
-        driver = initializeDriver();
+     TestBase.driver = initializeDriver();
     }
 
-    public String navigatesToSite(String url) throws IOException {
+    public void navigatesToSite(String url) throws IOException {
         CommonActionsSteps.url = url;
         url = readUrlFromDataProperties();
-        driver.get(url);
-        driver.manage().window().maximize();
-        return url;
+        TestBase.driver.get(url);
+        TestBase.driver.manage().window().maximize();
     }
 
     public void verifyTheTitleOfTheHomepage() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(TestBase.driver);
         String title1 = homePage.verifyHomePageTitle();
+        TestBase.driver.get(title1);
         LOGGER.info(title1);
     }
 }

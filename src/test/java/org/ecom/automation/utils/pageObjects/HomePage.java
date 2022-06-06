@@ -18,18 +18,17 @@ public class HomePage extends TestBase {
         this.driver = driver;
     }
 
-    final By signInLink = By.xpath("sign In");
+    final By signInLink = By.xpath("//a[@class='login']");
 
     public void clickOnSigninLink() {
-        driver = new ChromeDriver();
-        driver.findElement(signInLink).click();
+        TestBase.driver.findElement(signInLink).click();
+
     }
 
     public String verifyHomePageTitle() {
-        driver = new ChromeDriver();
-        String actualTitle = driver.getTitle();
+        String actualTitle = TestBase.driver.getTitle();
         String expectedTitle = "My Store";
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(TestBase.driver, 30);
         wait.until(ExpectedConditions.titleIs("My Store"));
         Assert.assertEquals(actualTitle, expectedTitle, "Title verified");
 

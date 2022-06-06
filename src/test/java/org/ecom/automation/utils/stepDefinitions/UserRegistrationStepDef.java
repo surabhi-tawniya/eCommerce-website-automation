@@ -4,7 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.ecom.automation.utils.pageObjects.AuthenticationPage;
+import org.ecom.automation.utils.pageObjects.AccountCreationPage;
 import org.ecom.automation.utils.pageObjects.HomePage;
 import org.ecom.automation.utils.pageObjects.Sign_inPage;
 import org.ecom.automation.utils.pageObjects.UserRegistrationSuccessful;
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class UserRegistrationStepDef {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserRegistrationStepDef.class);
     public WebDriver driver;
-    private final CommonActionsSteps commonSteps = new CommonActionsSteps(driver);
+    private final CommonActionsSteps commonSteps = new CommonActionsSteps(null);
 
     public UserRegistrationStepDef() {
     }
@@ -32,10 +32,10 @@ public class UserRegistrationStepDef {
         commonSteps.navigatesToSite(url);
     }
 
-    @And("verify the title of the homepage")
-    public void verifyingTitleOfLandingPage() {
+   /* @And("verify the title of the homepage")
+    public void verifyTheTitleOfTheHomepage() {
         commonSteps.verifyTheTitleOfTheHomepage();
-    }
+    }*/
 
     @When("user clicks on Sign-in link")
     public void userClicksOnSignInLink() {
@@ -49,15 +49,15 @@ public class UserRegistrationStepDef {
         sign_in.clickOnCreateAccountButton();
     }
 
-    @And("user enters his personal information")
+  /*  @And("user enters his personal information")
     public void userEntersHisPersonalInformation() {
-        AuthenticationPage authenticate = new AuthenticationPage(driver);
+        AccountCreationPage authenticate = new AccountCreationPage(driver);
         authenticate.enterPersonalInformation();
     }
-
+*/
     @Then("clicks on Registration button")
     public void clicksOnRegistrationButton() {
-        AuthenticationPage authenticate = new AuthenticationPage(driver);
+        AccountCreationPage authenticate = new AccountCreationPage(driver);
         authenticate.clickOnSubmitButton();
     }
 
@@ -69,6 +69,8 @@ public class UserRegistrationStepDef {
         LOGGER.info("User is registered successfully");
         driver.close();
     }
+
+
 }
 
 
