@@ -17,47 +17,33 @@ import java.io.IOException;
 
 public class UserRegistrationStepDef extends TestBase  {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserRegistrationStepDef.class);
-   // private static final CommonActionsSteps commonSteps = new CommonActionsSteps(TestBase.driver);
-    public WebDriver driver;
 
-    public UserRegistrationStepDef() {
-    }
-
-    @Given("initialize the browser with chrome")
-    public void setUp() throws IOException {
-      driver = initializeDriver();
-
-    }
-
-    @And("navigates to {string} site")
-    public void launchApp(String urlName) throws IOException {
-        navigatesToSite(urlName);
+    private final HomePage homePage;
+    public UserRegistrationStepDef(HomePage homePage) {
+        this.homePage = homePage;
     }
 
     @When("user clicks on Sign-in link")
     public void userClicksOnSignInLink() {
-        HomePage homePage = new HomePage(TestBase.driver);
         homePage.clickOnSigninLink();
     }
 
-
-
     @And("verify the title of registration page")
     public void verifyTheTitleOfRegistrationPage() {
-        RegistrationPage registration = new RegistrationPage(driver);
+        RegistrationPage registration = new RegistrationPage(getDriver());
         registration.verifyHomePageTitle();
 
     }
 
     @Then("clicks on Registration button")
     public void clicksOnRegistrationButton() {
-        RegistrationPage authenticate = new RegistrationPage(driver);
+        RegistrationPage authenticate = new RegistrationPage(getDriver());
         authenticate.clickOnSubmitButton();
     }
 
     @And("verify that the user is registered successfully")
     public void verifyThatTheUserIsRegisteredSuccessfully() {
-        MyAccountPage registrationSuccessful = new MyAccountPage(driver);
+        MyAccountPage registrationSuccessful = new MyAccountPage(getDriver());
         registrationSuccessful.verifyMyAccountPageTitle();
         registrationSuccessful.verifyMyAccountName();
         LOGGER.info("User is registered successfully");
@@ -66,7 +52,7 @@ public class UserRegistrationStepDef extends TestBase  {
 
     @And("enters {string} in create an account section and clicks the button")
     public void entersInCreateAnAccountSectionAndClicksTheButton(String email) {
-        Sign_inPage sign_in = new Sign_inPage(driver);
+        Sign_inPage sign_in = new Sign_inPage(getDriver());
         sign_in.clickOnCreateAccountButton(email);
         tearDown();
     }

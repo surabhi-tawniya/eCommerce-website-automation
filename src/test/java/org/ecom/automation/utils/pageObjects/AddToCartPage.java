@@ -9,20 +9,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AddToCartPage {
+public class AddToCartPage extends TestBase {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
-    public WebDriver driver;
-    public AddToCartPage(WebDriver driver) {
-        this.driver = driver;
-    }
 
     By addToCartBtn = By.xpath("//*[@id=\"add_to_cart\"]/button/span");
 
     public void clickOnAddToCart(){
-        WebDriverWait wait = new WebDriverWait(TestBase.driver, 30);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartBtn)).click();
-        driver.findElement(addToCartBtn).click();
+        getDriver().findElement(addToCartBtn).click();
         LOGGER.info("Product added to the cart successfully");
     }
 }

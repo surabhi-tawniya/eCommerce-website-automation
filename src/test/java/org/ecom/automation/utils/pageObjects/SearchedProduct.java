@@ -10,8 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class SearchedProduct {
-
+public class SearchedProduct extends TestBase {
     private final static Logger LOGGER = LoggerFactory.getLogger(SearchedProduct.class);
     public WebDriver driver;
 
@@ -27,13 +26,13 @@ public class SearchedProduct {
 
 
     public void getProductList() {
-        String result = TestBase.driver.findElement(productResult).getText();
+        String result = getDriver().findElement(productResult).getText();
         System.out.print("Searched Product Result :: " + result);
 
     }
 
     public void setProductSort() {
-        WebElement dropdown = TestBase.driver.findElement(productSort);
+        WebElement dropdown = getDriver().findElement(productSort);
         Select selectCategory = new Select(dropdown);
         selectCategory.selectByVisibleText("In stock");
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -45,6 +44,6 @@ public class SearchedProduct {
     public void navigateToProduct() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,250)", "");
-        TestBase.driver.findElement(navigatetoProduct).click();
+        getDriver().findElement(navigatetoProduct).click();
     }
 }

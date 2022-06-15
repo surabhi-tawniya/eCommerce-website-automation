@@ -20,26 +20,26 @@ public class UserLoginStepDef extends TestBase {
 
     @When("I clicks on Sign-in link")
     public void iClicksOnSignInLink() {
-        HomePage homePage = new HomePage(TestBase.driver);
+        HomePage homePage = new HomePage();
         homePage.clickOnSigninLink();
     }
 
     @And("enters {string} and {string}")
     public void entersAnd(String email_id, String password) {
-        LoginPage loginPage = new LoginPage(TestBase.driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.userEnterValidCredentials(email_id, password);
 
     }
 
     @Then("clicks on sign in button")
     public void ClicksOnSignInButton() {
-        LoginPage loginPage = new LoginPage(TestBase.driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.userClicksSignInButton();
     }
 
     @And("user should be logged in successfully")
     public void userShouldBeLoggedInSuccessfully() {
-        TestBase.driver.getTitle();
+        getDriver().getTitle();
         LOGGER.info("User is logged in successfully");
         tearDown();
     }

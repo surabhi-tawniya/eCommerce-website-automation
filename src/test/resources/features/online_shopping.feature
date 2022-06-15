@@ -1,14 +1,14 @@
 Feature: Registration functionality on E-commerce online shopping website
 
   Background:
-    Given initialize the browser with chrome
+    Given initialize the browser
     And    navigates to "url" site
   # And   verify the title of the homepage
 
   Scenario Outline: As a user I want to register or sign in on website
     When  user clicks on Sign-in link
     And   enters "<email_id>" in create an account section and clicks the button
-    And   verify the title of registration page
+     #And   verify the title of registration page
     Then  clicks on Registration button
     And   verify that the user is registered successfully
 

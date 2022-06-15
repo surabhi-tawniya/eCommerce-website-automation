@@ -12,7 +12,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.BeforeTest;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -21,14 +20,10 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     private final static Logger LOGGER = LoggerFactory.getLogger(TestBase.class);
-    public static WebDriver driver;
+    private static WebDriver driver;
     private static Properties properties;
 
-    public TestBase() {
-    }
-
-
-    public static WebDriver initializeDriver() throws IOException {
+    public void initializeDriver() throws IOException {
         properties = new Properties();
         FileReader File = new FileReader("src/test/resources/data/data.properties");
         properties.load(File);
@@ -37,7 +32,7 @@ public class TestBase {
 
         switch (browserName) {
             case "chrome":
-                System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, "E:\\Drivers\\chromedriver102.exe");
+                System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, "C:\\Users\\saura\\eclipse-workspace-onlyfullstack\\eCommerce-website-automation\\chromedriver.exe");
                 driver = new ChromeDriver();
                 break;
             case "firefox":
@@ -50,11 +45,8 @@ public class TestBase {
                 break;
         }
         driver.manage().window().maximize();
-        return driver;
     }
-
-
-    public static String  navigatesToSite(String urlName) throws IOException {
+    public void  navigatesToSite(String urlName) throws IOException {
         properties = new Properties();
         FileReader File = new FileReader("src/test/resources/data/data.properties");
         properties.load(File);
@@ -62,11 +54,11 @@ public class TestBase {
         driver.get(url);
         driver.manage().timeouts().pageLoadTimeout(5000, TimeUnit.MILLISECONDS);
         LOGGER.info(url);
-        return urlName;
     }
-
-
-    public static void tearDown(){
+    public void tearDown(){
         driver.close();
+    }
+    public WebDriver getDriver() {
+        return driver;
     }
 }

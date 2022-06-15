@@ -16,13 +16,13 @@ public class LoginPage extends TestBase {
     final By signInButton = By.xpath("//*[@id=\"SubmitLogin\"]/span");
 
     public LoginPage userEnterValidCredentials(String email_id, String password) {
-        TestBase.driver.findElement(enterEmail).sendKeys(email_id);
-        TestBase.driver.findElement(passwrd).sendKeys(password);
+        getDriver().findElement(enterEmail).sendKeys(email_id);
+        getDriver().findElement(passwrd).sendKeys(password);
         return this;
     }
 
     public LoginPage userClicksSignInButton() {
-        TestBase.driver.findElement(signInButton).click();
+        getDriver().findElement(signInButton).click();
         return this;
     }
 }

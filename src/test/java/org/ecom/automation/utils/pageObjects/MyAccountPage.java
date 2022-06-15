@@ -2,13 +2,13 @@ package org.ecom.automation.utils.pageObjects;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.ecom.automation.utils.fileUtils.TestBase;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.Assert;
 
 public class MyAccountPage extends TestBase {
     private final static Logger LOGGER = LoggerFactory.getLogger(MyAccountPage.class);

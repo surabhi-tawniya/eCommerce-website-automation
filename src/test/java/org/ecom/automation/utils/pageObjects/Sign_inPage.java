@@ -1,9 +1,9 @@
 package org.ecom.automation.utils.pageObjects;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.ecom.automation.utils.fileUtils.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class Sign_inPage extends TestBase {
     public WebDriver driver;
@@ -18,8 +18,8 @@ public class Sign_inPage extends TestBase {
     public String clickOnCreateAccountButton(String email) {
         String randomEmail = RandomStringUtils.random(20, true, true);
         String e_id = randomEmail + "@gmail.com";
-        TestBase.driver.findElement(email_id).sendKeys(e_id);
-        TestBase.driver.findElement(create_an_account_button).click();
+        getDriver().findElement(email_id).sendKeys(e_id);
+        getDriver().findElement(create_an_account_button).click();
         return email;
     }
 }
