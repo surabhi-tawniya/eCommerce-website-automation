@@ -15,10 +15,11 @@ public class Sign_inPage extends TestBase {
     final By email_id = By.id("email_create");
     final By create_an_account_button = By.xpath("//*[@id=\"SubmitCreate\"]/span");
 
-    public void clickOnCreateAccountButton() {
+    public String clickOnCreateAccountButton(String email) {
         String randomEmail = RandomStringUtils.random(20, true, true);
-        String email = randomEmail + "@gmail.com";
-        TestBase.driver.findElement(email_id).sendKeys(email);
+        String e_id = randomEmail + "@gmail.com";
+        TestBase.driver.findElement(email_id).sendKeys(e_id);
         TestBase.driver.findElement(create_an_account_button).click();
+        return email;
     }
 }

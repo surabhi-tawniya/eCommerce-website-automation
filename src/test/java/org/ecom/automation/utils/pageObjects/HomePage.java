@@ -2,8 +2,9 @@ package org.ecom.automation.utils.pageObjects;
 
 import org.ecom.automation.utils.fileUtils.TestBase;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -19,16 +20,20 @@ public class HomePage extends TestBase {
     }
 
     final By signInLink = By.xpath("//a[@class='login']");
+    final By searchTextbox = By.id("search_query_top");
+    final By searchButton = By.name("submit_search");
 
     public void clickOnSigninLink() {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(signInLink));
         TestBase.driver.findElement(signInLink).click();
 
     }
 
     public String verifyHomePageTitle() {
-        String actualTitle = TestBase.driver.getTitle();
+        String actualTitle = driver.getTitle();
         String expectedTitle = "My Store";
-        WebDriverWait wait = new WebDriverWait(TestBase.driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.titleIs("My Store"));
         Assert.assertEquals(actualTitle, expectedTitle, "Title verified");
 
@@ -38,5 +43,17 @@ public class HomePage extends TestBase {
             LOGGER.info("Test Failed !");
         }
         return actualTitle;
+    }
+
+    public void clickOnSearchBox() {
+        TestBase.driver.findElement(searchTextbox).click();
+    }
+
+    public void searchProduct(String productName) {
+        TestBase.driver.findElement(searchTextbox).sendKeys(productName);
+
+        WebElement textbox = driver.findElement(searchButton);
+        textbox.sendKeys(Keys.ENTER);
+
     }
 }

@@ -1,57 +1,47 @@
 package org.ecom.automation.utils.stepDefinitions;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.ecom.automation.utils.fileUtils.TestBase;
 import org.ecom.automation.utils.pageObjects.HomePage;
 import org.ecom.automation.utils.pageObjects.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-
-public class UserLoginStepDef extends CommonActionsSteps {
+public class UserLoginStepDef extends TestBase {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserLoginStepDef.class);
-    private final CommonActionsSteps commonSteps = new CommonActionsSteps(null);
     public WebDriver driver;
 
     public UserLoginStepDef() {
-        super();
-    }
 
-    @Given("initialize the browser with chrome")
-    public void initializingDriver() throws IOException {
-        commonSteps.initializeTheBrowserWithChrome();
-    }
-
-    @When("navigates to {string} site")
-    public void navigatingToUrl(String url) throws IOException {
-        commonSteps.navigatesToSite(url);
     }
 
     @When("I clicks on Sign-in link")
     public void iClicksOnSignInLink() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(TestBase.driver);
         homePage.clickOnSigninLink();
     }
 
-    @And("enters <email_id> and <password>")
-    public void entersEmail_idAndPassword() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.userEnterValidCredentials();
+    @And("enters {string} and {string}")
+    public void entersAnd(String email_id, String password) {
+        LoginPage loginPage = new LoginPage(TestBase.driver);
+        loginPage.userEnterValidCredentials(email_id, password);
+
     }
 
     @Then("clicks on sign in button")
     public void ClicksOnSignInButton() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(TestBase.driver);
         loginPage.userClicksSignInButton();
     }
 
     @And("user should be logged in successfully")
     public void userShouldBeLoggedInSuccessfully() {
-        driver.getTitle();
+        TestBase.driver.getTitle();
         LOGGER.info("User is logged in successfully");
+        tearDown();
     }
+
 }
